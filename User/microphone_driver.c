@@ -47,10 +47,10 @@ uint8_t flags; // bit 0: switch, bit 1: lock
 float32_t red, green, blue;
 
 /*buffers*/
-static uint16_t mic_DMA_PDM_Buffer[2][INTERNAL_BUFFER_SIZE];
-static uint16_t mic_PCM_Buffer[PCM_LENGTH];
-static float32_t mic_PCM_Buffer_float[PCM_LENGTH];
-static float32_t mic_FFT_Buffer[PCM_LENGTH + 1];
+uint16_t mic_DMA_PDM_Buffer[2][INTERNAL_BUFFER_SIZE];
+uint16_t mic_PCM_Buffer[PCM_LENGTH];
+float32_t mic_PCM_Buffer_float[PCM_LENGTH];
+float32_t mic_FFT_Buffer[PCM_LENGTH + 1];
 
 
 /*Init structures*/
