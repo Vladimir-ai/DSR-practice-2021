@@ -2840,201 +2840,672 @@
         </settings>
     </configuration>
     <group>
-        <name>Libraries</name>
+        <name>Driver</name>
         <group>
-            <name>Device</name>
+            <name>BSP</name>
             <group>
-                <name>STM32F4xx</name>
+                <name>Components</name>
                 <group>
                     <name>Include</name>
                     <file>
-                        <name>$PROJ_DIR$\Libraries\Device\STM32F4xx\Include\stm32f4xx.h</name>
+                        <name>$PROJ_DIR$\Drivers\BSP\Components\Common\audio.h</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\Libraries\Device\STM32F4xx\Include\system_stm32f4xx.h</name>
+                        <name>$PROJ_DIR$\Drivers\BSP\Components\cs43l22\cs43l22.h</name>
+                    </file>
+                </group>
+                <group>
+                    <name>Source</name>
+                    <file>
+                        <name>$PROJ_DIR$\Drivers\BSP\Components\cs43l22\cs43l22.c</name>
+                    </file>
+                </group>
+            </group>
+            <group>
+                <name>STM32F4-Discovery</name>
+                <group>
+                    <name>Include</name>
+                    <file>
+                        <name>$PROJ_DIR$\Drivers\BSP\STM32F4-Discovery\stm32f4_discovery.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\Drivers\BSP\STM32F4-Discovery\stm32f4_discovery_accelerometer.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\Drivers\BSP\STM32F4-Discovery\stm32f4_discovery_audio.h</name>
+                    </file>
+                </group>
+                <group>
+                    <name>Source</name>
+                    <file>
+                        <name>$PROJ_DIR$\Drivers\BSP\STM32F4-Discovery\stm32f4_discovery.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\Drivers\BSP\STM32F4-Discovery\stm32f4_discovery_accelerometer.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\Drivers\BSP\STM32F4-Discovery\stm32f4_discovery_audio.c</name>
                     </file>
                 </group>
             </group>
         </group>
         <group>
-            <name>STM32F4xx_StdPeriph_Driver</name>
+            <name>Device</name>
+            <group>
+                <name>STM32F407xx</name>
+                <group>
+                    <name>Include</name>
+                    <file>
+                        <name>$PROJ_DIR$\Device\STM32F407xx\Include\stm32f407xx.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\Device\STM32F407xx\Include\stm32f4xx.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\Device\STM32F407xx\Include\stm32f4xx_hal_conf.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\Device\STM32F407xx\Include\system_stm32f4xx.h</name>
+                    </file>
+                </group>
+                <group>
+                    <name>Source</name>
+                    <file>
+                        <name>$PROJ_DIR$\Device\STM32F407xx\Source\system_stm32f4xx.c</name>
+                    </file>
+                </group>
+            </group>
+        </group>
+        <group>
+            <name>Startup</name>
+            <file>
+                <name>$PROJ_DIR$\Device\STM32F407xx\Include\startup_stm32f407xx.s</name>
+            </file>
+        </group>
+        <group>
+            <name>STM32F4xx_HAL_Driver</name>
             <group>
                 <name>Include</name>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\misc.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32_assert_template.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_adc.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_can.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_crc.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_cryp.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_dac.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cec.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_dbgmcu.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_conf_template.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_dcmi.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_dma.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_crc.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_exti.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cryp.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_flash.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cryp_ex.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_fsmc.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_gpio.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac_ex.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_hash.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_i2c.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi_ex.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_iwdg.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_pwr.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dfsdm.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_rcc.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_rng.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_rtc.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_sdio.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dsi.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_spi.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_eth.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_syscfg.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_exti.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_tim.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_usart.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Include\stm32f4xx_wwdg.h</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_fmpi2c.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_fmpi2c_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_fmpsmbus.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_fmpsmbus_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hash.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hash_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_irda.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_iwdg.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_lptim.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_mmc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nand.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pccard.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_qspi.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rng.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sd.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_smartcard.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_smbus.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spdifrx.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sram.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_usart.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_wwdg.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_adc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_bus.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_cortex.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_crc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_dac.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_dma.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_dma2d.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_exti.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmpi2c.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fsmc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_gpio.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_i2c.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_iwdg.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_lptim.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_pwr.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_rcc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_rng.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_rtc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_sdmmc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_spi.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_system.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_tim.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usart.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_utils.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_wwdg.h</name>
                 </file>
             </group>
             <group>
                 <name>Source</name>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\misc.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_adc.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_can.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_crc.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_cryp.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_cryp_aes.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_cryp_des.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_cryp_tdes.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_dac.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_dbgmcu.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_dcmi.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_dma.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_exti.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_flash.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dfsdm.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_fsmc.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_gpio.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma2d.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_hash.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_hash_md5.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dsi.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_hash_sha1.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_i2c.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_exti.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_iwdg.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_pwr.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_rcc.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_rng.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_rtc.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_sdio.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpsmbus.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_spi.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpsmbus_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_syscfg.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_tim.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_usart.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash_ex.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\Libraries\STM32F4xx_StdPeriph_Driver\Source\stm32f4xx_wwdg.c</name>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hcd.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_irda.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_iwdg.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_lptim.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_mmc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nand.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pccard.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_qspi.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rng.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sd.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sdram.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smartcard.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smbus.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spdifrx.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sram.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_usart.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_wwdg.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_adc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_crc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dac.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma2d.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_exti.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmpi2c.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fsmc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_gpio.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_i2c.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_lptim.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_pwr.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rcc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rng.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rtc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_spi.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_tim.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usart.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_utils.c</name>
                 </file>
             </group>
+        </group>
+    </group>
+    <group>
+        <name>Middelwares</name>
+        <group>
+            <name>STM32_Audio</name>
+            <file>
+                <name>$PROJ_DIR$\Middlewares\STM32_Audio\Include\pdm2pcm_glo.h</name>
+            </file>
         </group>
     </group>
     <group>
@@ -3046,55 +3517,13 @@
             <name>$PROJ_DIR$\User\microphone_driver.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\User\microphone_driver.h</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\User\pwm_led.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\User\pwm_led.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\User\startup_stm32f4xx.s</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\User\stm32f4xx_conf.h</name>
+            <name>$PROJ_DIR$\User\stm32f4xx_hal_msp.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\User\stm32f4xx_it.c</name>
         </file>
-        <file>
-            <name>$PROJ_DIR$\User\stm32f4xx_it.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\User\system_stm32f4xx.c</name>
-        </file>
-    </group>
-    <group>
-        <name>Utilities</name>
-        <group>
-            <name>STM32F4-Discovery</name>
-            <file>
-                <name>$PROJ_DIR$\Utilities\STM32F4-Discovery\pdm_filter.h</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\Utilities\STM32F4-Discovery\stm32f4_discovery.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\Utilities\STM32F4-Discovery\stm32f4_discovery.h</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\Utilities\STM32F4-Discovery\stm32f4_discovery_audio_codec.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\Utilities\STM32F4-Discovery\stm32f4_discovery_audio_codec.h</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\Utilities\STM32F4-Discovery\stm32f4_discovery_lis302dl.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\Utilities\STM32F4-Discovery\stm32f4_discovery_lis302dl.h</name>
-            </file>
-        </group>
     </group>
 </project>

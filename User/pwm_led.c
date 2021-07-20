@@ -1,66 +1,79 @@
 #include "pwm_led.h"
-#include "stm32f4xx_tim.h"
+#include "stm32f4xx_hal_tim.h"
+#include "stm32f4xx_it.h"
 
 
-TIM_TimeBaseInitTypeDef Time_InitStruct;
+/* Private function prototypes */
+static void ledGPIOinit(void);
+static void PWMinit(uint32_t period, uint32_t pulse_duration);
 
-
-static void ledGPIOinit(){
+/* Private functions */
+static void ledGPIOinit(void){
   GPIO_InitTypeDef GPIO_InitStructure;
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-  GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
-  GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4);
-  GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);
-  GPIO_PinAFConfig(GPIOD, GPIO_PinSource15, GPIO_AF_TIM4);
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  
+  GPIO_InitStructure.Pin = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
+  GPIO_InitStructure.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStructure.Pull= GPIO_PULLUP;
+  GPIO_InitStructure.Speed = GPIO_SPEED_FAST;
+  GPIO_InitStructure.Alternate = GPIO_AF2_TIM4;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStructure);
 }
 
 
-static void PWMinit(){
-  TIM_OCInitTypeDef OC_InitStruct;
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
-
+static void PWMinit(uint32_t period, uint32_t pulse_duration){
+  TIM_HandleTypeDef timer;
+  TIM_OC_InitTypeDef ocConfig;
+  
+  __HAL_RCC_TIM4_CLK_ENABLE();  
+  
+  HAL_TIM_OC_Init(&timer);
+    
   SystemCoreClockUpdate();
-
-  Time_InitStruct.TIM_Period = DEFAULT_PERIOD;
-  Time_InitStruct.TIM_Prescaler = SystemCoreClock / 10000;
-  Time_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
-  Time_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;
-
-  TIM_TimeBaseInit(TIM4, &Time_InitStruct);
-
-  OC_InitStruct.TIM_OCMode = TIM_OCMode_PWM1;
-  OC_InitStruct.TIM_OutputState = TIM_OutputState_Enable;
-  OC_InitStruct.TIM_Pulse = DEFAULT_PULSE;
-  OC_InitStruct.TIM_OCPolarity = TIM_OCPolarity_High;
-
-  TIM_OC1Init(TIM4, &OC_InitStruct);
-  TIM_OC1PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-  TIM_OC2Init(TIM4, &OC_InitStruct);
-  TIM_OC2PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-  TIM_OC3Init(TIM4, &OC_InitStruct);
-  TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-  TIM_OC4Init(TIM4, &OC_InitStruct);
-  TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-  TIM_ARRPreloadConfig(TIM4, ENABLE);
-  TIM_Cmd(TIM4, ENABLE);
+  
+  timer.Instance = TIM4;
+  timer.Init.Period = period;
+  timer.Init.Prescaler = (SystemCoreClock / 5000) - 1;
+  timer.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  timer.Init.CounterMode = TIM_COUNTERMODE_UP;
+  timer.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  
+  if(HAL_TIM_OC_Init(&timer) != HAL_OK){
+    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_All);
+  }
+  
+  ocConfig.OCMode = TIM_OCMODE_PWM1;
+  ocConfig.Pulse = pulse_duration;
+  ocConfig.OCPolarity = TIM_OCPOLARITY_HIGH;
+  
+  if(HAL_TIM_OC_ConfigChannel(&timer, &ocConfig, TIM_CHANNEL_1)){
+    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_All);
+  }
+  
+  if(HAL_TIM_OC_ConfigChannel(&timer, &ocConfig, TIM_CHANNEL_2)){
+    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_All);
+  }
+  
+  if(HAL_TIM_OC_ConfigChannel(&timer, &ocConfig, TIM_CHANNEL_3)){
+    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_All);
+  }
+  
+  if(HAL_TIM_OC_ConfigChannel(&timer, &ocConfig, TIM_CHANNEL_4)){
+    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_All);
+  }
+  
+  HAL_TIM_OC_Start(&timer, TIM_CHANNEL_1);
+  HAL_TIM_OC_Start(&timer, TIM_CHANNEL_2);
+  HAL_TIM_OC_Start(&timer, TIM_CHANNEL_3);
+  HAL_TIM_OC_Start(&timer, TIM_CHANNEL_4);
+  
 }
 
 
-void ledPWMinit(){
+void ledPWMinit(uint32_t period, uint32_t pulse_duration){
   ledGPIOinit();
-  PWMinit();
+  PWMinit(period, pulse_duration);
 }
 
 
@@ -68,20 +81,21 @@ void ledPWMinit(){
  * @brief change timer period (in ticks)
  * @param period: new timer period in ticks
  */
-void changePeriodDelay(uint32_t period_ticks){
+void changePeriodDuration(uint32_t period_ticks){
   TIM4->ARR = period_ticks;
 }
 
 
-void changePulseDelayForAll(uint32_t pulse_ticks){
-  TIM4->CCR1 = pulse_ticks;
-  TIM4->CCR2 = pulse_ticks;
-  TIM4->CCR3 = pulse_ticks;
-  TIM4->CCR4 = pulse_ticks;
+void changePulseDurationForAll(uint32_t pulse_ticks){
+  uint32_t temp = pulse_ticks;
+  TIM4->CCR1 = temp;
+  TIM4->CCR2 = temp;
+  TIM4->CCR3 = temp;
+  TIM4->CCR4 = temp;
 }
 
 
-void changePulseDelay(Led_TypeDef LED, uint32_t pulse_ticks){
+void changePulseDuration(Led_TypeDef LED, uint32_t pulse_ticks){
   switch (LED) {
     case LED4: TIM4->CCR1 = pulse_ticks; break;
     case LED3: TIM4->CCR2 = pulse_ticks; break;

@@ -1,9 +1,18 @@
-#ifndef MICROPHONE_DRIVER_H_
-#define MICROPHONE_DRIVER_H_
+#ifndef _MICROPHONE_DRIVER_H
+#define _MICROPHONE_DRIVER_H
 
-#include "stm32f4xx_gpio.h"
-
+/**
+  * @brief  Microphone initialisation.
+  * @retval None.
+  */
 void microphone_init(void);
-void microphone_start(void);
 
-#endif /* MICROPHONE_DRIVER_H_ */
+/**
+  * @brief  Record start.
+  * @retval None.
+  */
+void record_start(void);
+
+void record_stop(void);
+
+#endif /* _MICROPHONE_DRIVER_H */

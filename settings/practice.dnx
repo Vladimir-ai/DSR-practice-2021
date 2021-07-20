@@ -11,25 +11,10 @@
         <LimitSize>0</LimitSize>
         <ByteLimit>50</ByteLimit>
     </Stack>
-    <Interrupts>
-        <Enabled>1</Enabled>
-    </Interrupts>
-    <MemConfig>
-        <Base>1</Base>
-        <Manual>0</Manual>
-        <Ddf>1</Ddf>
-        <TypeViol>0</TypeViol>
-        <Stop>1</Stop>
-    </MemConfig>
     <Trace1>
         <Enabled>0</Enabled>
         <ShowSource>1</ShowSource>
     </Trace1>
-    <Simulator>
-        <Freq>10000000</Freq>
-        <FreqHi>0</FreqHi>
-        <MultiCoreRunAll>1</MultiCoreRunAll>
-    </Simulator>
     <PlDriver>
         <FirstRun>0</FirstRun>
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\CONFIG\debugger\ST\STM32F407VG.ddf</MemConfigValue>
@@ -40,13 +25,13 @@
     <StLinkDriver>
         <stlinkserialNo>066CFF303431573457153117</stlinkserialNo>
         <stlinkfoundProbes />
-        <stlinkResetStyle>0</stlinkResetStyle>
-        <stlinkResetStrategy>0</stlinkResetStrategy>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <CStepIntDis>_ 0</CStepIntDis>
+        <stlinkResetStyle>0</stlinkResetStyle>
+        <stlinkResetStrategy>0</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3348944481</Checksum>
+        <Checksum>2412635894</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -77,6 +62,21 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
+    <Interrupts>
+        <Enabled>1</Enabled>
+    </Interrupts>
+    <MemConfig>
+        <Base>1</Base>
+        <Manual>0</Manual>
+        <Ddf>1</Ddf>
+        <TypeViol>0</TypeViol>
+        <Stop>1</Stop>
+    </MemConfig>
+    <Simulator>
+        <Freq>10000000</Freq>
+        <FreqHi>0</FreqHi>
+        <MultiCoreRunAll>1</MultiCoreRunAll>
+    </Simulator>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -124,6 +124,14 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
+    <DisassembleMode>
+        <mode>0</mode>
+    </DisassembleMode>
+    <Breakpoints2>
+        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c}.258.5" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 1 "EMUL_CODE" "{$PROJ_DIR$\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c}.887.13" 0 0 1 "" 0 "" 0</Bp1>
+        <Count>2</Count>
+    </Breakpoints2>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -133,6 +141,11 @@
         <LogFile>_ ""</LogFile>
         <Category>_ 0</Category>
     </LogFile>
+    <Aliases>
+        <A0>_ "C:\CMSIS\CMSIS_V2P10\CMSIS\DSP_Lib\Source\ARM\..\TransformFunctions\arm_rfft_q15.c" ""</A0>
+        <Count>1</Count>
+        <SuppressDialog>0</SuppressDialog>
+    </Aliases>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
@@ -146,17 +159,4 @@
     <CallStackStripe>
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
-    <DisassembleMode>
-        <mode>0</mode>
-    </DisassembleMode>
-    <Breakpoints2>
-        <Bp0>_ 0 "EMUL_DATA_LOG" "Mic_PCM_Buffer" 0 0</Bp0>
-        <Bp1>_ 0 "EMUL_CODE" "0x800'6ca0" 0 0 1 "" 0 "" 0</Bp1>
-        <Count>2</Count>
-    </Breakpoints2>
-    <Aliases>
-        <A0>_ "C:\CMSIS\CMSIS_V2P10\CMSIS\DSP_Lib\Source\ARM\..\TransformFunctions\arm_rfft_q15.c" ""</A0>
-        <Count>1</Count>
-        <SuppressDialog>0</SuppressDialog>
-    </Aliases>
 </settings>

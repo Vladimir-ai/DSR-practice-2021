@@ -1,39 +1,33 @@
 /**
   ******************************************************************************
-  * @file    Project/STM32F4xx_StdPeriph_Template/stm32f4xx_it.c 
+  * @file    Templates/Src/stm32f4xx_it.c 
   * @author  MCD Application Team
-  * @version V1.1.0
-  * @date    18-January-2013
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and 
   *          peripherals interrupt service routine.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
+  * All rights reserved.</center></h2>
   *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
   *
   ******************************************************************************
   */
 
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
 #include "stm32f4xx_it.h"
-#include "pwm_led.h"
 
+/** @addtogroup STM32F4xx_HAL_Examples
+  * @{
+  */
 
-
-/** @addtogroup Template_Project
+/** @addtogroup Templates
   * @{
   */
 
@@ -41,13 +35,11 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-    __IO uint16_t systick_delay = 0;
+
+extern I2S_HandleTypeDef       hAudioInI2s;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
-    static void TimingDelay_Decrement(){
-      if (systick_delay)
-        systick_delay--;
-    }
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */
@@ -148,34 +140,33 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
-  TimingDelay_Decrement();
+  HAL_IncTick();
 }
-
-void delay(uint16_t time){
-  systick_delay = time;
-  while(systick_delay);
-}
-
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
 /*  available peripheral interrupt handler's name please refer to the startup */
-/*  file (startup_stm32f40xx.s/startup_stm32f427x.s).                         */
+/*  file (startup_stm32f4xx.s).                                               */
 /******************************************************************************/
 
 /**
-  * @brief  This function handles PPP interrupt request.
+  * @brief  This function handles DMA Stream interrupt request.
   * @param  None
   * @retval None
   */
-/*void PPP_IRQHandler(void)
+void I2S2_IRQHandler(void)
 {
-}*/
+  HAL_DMA_IRQHandler(hAudioInI2s.hdmarx);
+}
+
 
 /**
   * @}
   */ 
 
+/**
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
