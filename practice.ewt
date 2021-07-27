@@ -3517,7 +3517,19 @@
             <name>$PROJ_DIR$\User\microphone_driver.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\User\modes.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\User\modes.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\User\pwm_led.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\User\spectrum_lib.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\User\spectrum_lib.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\User\stm32f4xx_hal_msp.c</name>

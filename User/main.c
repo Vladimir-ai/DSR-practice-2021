@@ -1,12 +1,16 @@
 /* Includes */
+#include "main.h"
 #include "microphone_driver.h"
 #include "pwm_led.h"
 
-/* Private macro */
-/* Private variables */
+
 /* Private function prototypes */
 static void SystemClock_Config(void);
 static void Error_Handler(void);
+
+static void init_periph();
+
+/* Private variables */
 /* Private functions */
 
 /**
@@ -18,11 +22,7 @@ static void Error_Handler(void);
 */
   int main(void)
 { 
-  HAL_Init();
-  SystemClock_Config();
-  
-  ledPWMinit(2000, 1000);
-  microphone_init();
+  init_periph();
   
   HAL_Delay(2000);
       
@@ -31,7 +31,26 @@ static void Error_Handler(void);
   /* Infinite loop */
   while (1)
   {
-     __NOP();
+     record_process();
+  }
+}
+
+static void init_periph(){
+  HAL_Init();
+  SystemClock_Config();
+  HAL_NVIC_SetPriority(SysTick_IRQn, 0x0E, 0);
+ 
+  BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI);
+
+  ledPWMinit(2000, 1000);
+  microphone_init();
+}
+          
+                                                   
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+  if(GPIO_Pin == GPIO_PIN_0){    
+      HAL_Delay(100);
+      next_mode();    
   }
 }
 
@@ -103,6 +122,8 @@ static void SystemClock_Config(void)
     __HAL_FLASH_PREFETCH_BUFFER_ENABLE();
   }
 }
+
+
 /**
   * @brief  This function is executed in case of error occurrence.
   * @param  None

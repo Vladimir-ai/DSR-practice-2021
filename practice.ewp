@@ -219,6 +219,7 @@
                     <state>USE_HAL_DRIVER</state>
                     <state>USE_STM32F4_DISCO</state>
                     <state>ARM_MATH_CM4</state>
+                    <state>NDEBUG</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -1146,7 +1147,7 @@
                 </option>
                 <option>
                     <name>RTConfigPath2</name>
-                    <state></state>
+                    <state>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</state>
                 </option>
                 <option>
                     <name>GBECoreSlave</name>
@@ -1375,7 +1376,7 @@
                 </option>
                 <option>
                     <name>OutputFile</name>
-                    <state></state>
+                    <state>$FILE_BNAME$.o</state>
                 </option>
                 <option>
                     <name>CCLibConfigHeader</name>
@@ -1631,7 +1632,7 @@
                 </option>
                 <option>
                     <name>AOutputFile</name>
-                    <state></state>
+                    <state>$FILE_BNAME$.o</state>
                 </option>
                 <option>
                     <name>ALimitErrorsCheck</name>
@@ -1796,7 +1797,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state></state>
+                    <state>$TOOLKIT_DIR$\CONFIG\generic_cortex.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1856,7 +1857,7 @@
                 </option>
                 <option>
                     <name>IlinkProgramEntryLabel</name>
-                    <state></state>
+                    <state>__iar_program_start</state>
                 </option>
                 <option>
                     <name>DoFill</name>
@@ -2029,7 +2030,7 @@
                 </option>
                 <option>
                     <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state>###Unitialized###</state>
+                    <state>practice_import_lib.o</state>
                 </option>
                 <option>
                     <name>OILinkExtraOption</name>
@@ -2773,7 +2774,19 @@
             <name>$PROJ_DIR$\User\microphone_driver.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\User\modes.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\User\modes.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\User\pwm_led.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\User\spectrum_lib.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\User\spectrum_lib.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\User\stm32f4xx_hal_msp.c</name>

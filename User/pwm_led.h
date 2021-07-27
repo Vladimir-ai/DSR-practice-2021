@@ -1,5 +1,9 @@
-#ifndef _PWM_LED_H
-#define _PWM_LED_H
+#ifndef PWM_LED_H
+#define PWM_LED_H
+
+#ifdef __cplusplus
+ extern "C" {
+#endif
 
 #include "stm32f4xx.h"
 #include "stm32f4_discovery.h"
@@ -12,21 +16,21 @@
             pulse_duration: PWM pulse duration.
   * @retval None.
   */
-void ledPWMinit(uint32_t period, uint32_t pulse_duration);
+void ledPWMinit(uint32_t period, uint32_t pulseDuration);
 
 /**
   * @brief  Changes PWM period.
   * @param  period: PWM period duration.
   * @retval None.
   */
-void changePeriodDuration(uint32_t period_ticks);
+void changePeriodDuration(uint32_t periodDuration);
 
 /**
-  * @brief  Changes PWM pulse for all LEDs.
+  * @brief  Changes PWM pulse duration for all LEDs.
   * @param  pulse_ticks: PWM pulse duration.
   * @retval None.
   */
-void changePulseDurationForAll(uint32_t pulse_ticks);
+void changePulseDurationForAll(uint32_t pulseDuration);
 
 /**
   * @brief  Changes PWM pulse for one LED.
@@ -34,6 +38,10 @@ void changePulseDurationForAll(uint32_t pulse_ticks);
             pulse_ticks: PWM pulse duration.
   * @retval None.
   */
-void changePulseDuration(Led_TypeDef LED, uint32_t pulse_ticks);
+void changePulseDuration(Led_TypeDef LED, uint32_t pulseDuration);
 
-#endif /* PWM_LED_H_ */
+#ifdef __cplusplus
+}
+#endif
+
+#endif

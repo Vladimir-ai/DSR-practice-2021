@@ -5,7 +5,7 @@
 
 /* Private function prototypes */
 static void ledGPIOinit(void);
-static void PWMinit(uint32_t period, uint32_t pulse_duration);
+static void PWMinit(uint32_t period, uint32_t pulseDuration);
 
 /* Private functions */
 static void ledGPIOinit(void){
@@ -22,7 +22,7 @@ static void ledGPIOinit(void){
 }
 
 
-static void PWMinit(uint32_t period, uint32_t pulse_duration){
+static void PWMinit(uint32_t period, uint32_t pulseDuration){
   TIM_HandleTypeDef timer;
   TIM_OC_InitTypeDef ocConfig;
   
@@ -44,7 +44,7 @@ static void PWMinit(uint32_t period, uint32_t pulse_duration){
   }
   
   ocConfig.OCMode = TIM_OCMODE_PWM1;
-  ocConfig.Pulse = pulse_duration;
+  ocConfig.Pulse = pulseDuration;
   ocConfig.OCPolarity = TIM_OCPOLARITY_HIGH;
   
   if(HAL_TIM_OC_ConfigChannel(&timer, &ocConfig, TIM_CHANNEL_1)){
@@ -71,36 +71,31 @@ static void PWMinit(uint32_t period, uint32_t pulse_duration){
 }
 
 
-void ledPWMinit(uint32_t period, uint32_t pulse_duration){
+void ledPWMinit(uint32_t period, uint32_t pulseDuration){
   ledGPIOinit();
-  PWMinit(period, pulse_duration);
+  PWMinit(period, pulseDuration);
 }
 
 
-/**
- * @brief change timer period (in ticks)
- * @param period: new timer period in ticks
- */
-void changePeriodDuration(uint32_t period_ticks){
-  TIM4->ARR = period_ticks;
+void changePeriodDuration(uint32_t periodDuration){
+  TIM4->ARR = periodDuration;
 }
 
 
-void changePulseDurationForAll(uint32_t pulse_ticks){
-  uint32_t temp = pulse_ticks;
-  TIM4->CCR1 = temp;
-  TIM4->CCR2 = temp;
-  TIM4->CCR3 = temp;
-  TIM4->CCR4 = temp;
+void changePulseDurationForAll(uint32_t pulseDuration){
+  TIM4->CCR1 = pulseDuration;
+  TIM4->CCR2 = pulseDuration;
+  TIM4->CCR3 = pulseDuration;
+  TIM4->CCR4 = pulseDuration;
 }
 
 
-void changePulseDuration(Led_TypeDef LED, uint32_t pulse_ticks){
+void changePulseDuration(Led_TypeDef LED, uint32_t pulseDuration){
   switch (LED) {
-    case LED4: TIM4->CCR1 = pulse_ticks; break;
-    case LED3: TIM4->CCR2 = pulse_ticks; break;
-    case LED5: TIM4->CCR3 = pulse_ticks; break;
-    case LED6: TIM4->CCR4 = pulse_ticks; break;
+    case LED4: TIM4->CCR1 = pulseDuration; break;
+    case LED3: TIM4->CCR2 = pulseDuration; break;
+    case LED5: TIM4->CCR3 = pulseDuration; break;
+    case LED6: TIM4->CCR4 = pulseDuration; break;
   }
 }
 
