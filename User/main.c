@@ -2,15 +2,33 @@
 #include "main.h"
 #include "microphone_driver.h"
 #include "pwm_led.h"
+#include "spectrum_processing.h"
+#include "modes.h"
+
+
+#define PCM_BUFFER_READY_FLAG                               0x01
+#define BUTTON_PRESSED_FLAG                                 0x02
 
 
 /* Private function prototypes */
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 
-static void init_periph();
+static void init_periph(void);
+static void init_timer2(void);
+
 
 /* Private variables */
+static uint16_t pdmBuffer[PDM_SAMPLES_NUMBER];
+static q15_t pcmBuffer[PCM_SAMPLES_NUMBER];
+
+static q15_t fftBuffer[PCM_SAMPLES_NUMBER * 2];              //arm_rfft_q15 returns 2 * fftLenReal(=PCM_SAPLES_NUMBER)
+static uint32_t fftResultBuffer[PCM_SAMPLES_NUMBER];            
+
+static uint8_t appFlags;
+
+TIM_HandleTypeDef hTimer2;
+
 /* Private functions */
 
 /**
@@ -20,39 +38,105 @@ static void init_periph();
 **
 **===========================================================================
 */
-  int main(void)
+ int main(void)
 { 
   init_periph();
+  if (set_FFT_config(PCM_SAMPLES_NUMBER, WINDOW_SIZE))
+    Error_Handler();
   
   HAL_Delay(2000);
-      
-  record_start();
+  
+  record_start(pdmBuffer, PDM_SAMPLES_NUMBER);
+  change_period_duration(PWM_PERIOD);
+  change_pulse_duration(LED3, PWM_PERIOD);
   
   /* Infinite loop */
   while (1)
   {
-     record_process();
+    if (!READ_BIT(appFlags, PCM_BUFFER_READY_FLAG))
+      continue;
+    
+    if (process_FFT(pcmBuffer, fftBuffer, fftResultBuffer) == BUFF_READY){
+      apply_mode(fftResultBuffer, PCM_SAMPLES_NUMBER - 2);
+    }
+    
+    CLEAR_BIT(appFlags, PCM_BUFFER_READY_FLAG);
   }
 }
 
-static void init_periph(){
+
+static void init_periph(void){
   HAL_Init();
   SystemClock_Config();
   HAL_NVIC_SetPriority(SysTick_IRQn, 0x0E, 0);
  
+  init_timer2();
+  
   BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI);
 
-  ledPWMinit(2000, 1000);
+  led_PWM_init(2000, 1000);
   microphone_init();
+  
+  set_FFT_config(PCM_SAMPLES_NUMBER, WINDOW_SIZE);  
 }
-          
-                                                   
+
+
+static void init_timer2(void){
+  __HAL_RCC_TIM2_CLK_ENABLE();  
+  
+  hTimer2.Instance = TIM2;
+  hTimer2.Init.Prescaler = (SystemCoreClock / 5000) - 1;
+  hTimer2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  hTimer2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  hTimer2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  hTimer2.Init.Period = 100;
+  
+  if (HAL_TIM_Base_Init(&hTimer2) != HAL_OK){
+    Error_Handler();
+  }
+      
+  HAL_NVIC_SetPriority(TIM2_IRQn, 0x0E, 6);
+  HAL_NVIC_EnableIRQ(TIM2_IRQn);
+}
+
+
+/*Interrupt callbacks--------------------------------------------------*/                                                   
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-  if(GPIO_Pin == GPIO_PIN_0){    
-      HAL_Delay(100);
+  if(GPIO_Pin == GPIO_PIN_0 && !READ_BIT(appFlags, BUTTON_PRESSED_FLAG)){    
       next_mode();    
+      SET_BIT(appFlags, BUTTON_PRESSED_FLAG);
+      HAL_TIM_Base_Start_IT(&hTimer2);
   }
 }
+
+
+void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s){
+  if(!READ_BIT(appFlags, PCM_BUFFER_READY_FLAG))
+    pdm_to_pcm(pdmBuffer, pcmBuffer);
+}
+
+
+void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s){
+  if(!READ_BIT(appFlags, PCM_BUFFER_READY_FLAG))
+    pdm_to_pcm(&pdmBuffer[PDM_SAMPLES_NUMBER / 2], &pcmBuffer[PCM_SAMPLES_NUMBER / 2]);
+  
+  SET_BIT(appFlags, PCM_BUFFER_READY_FLAG);
+}
+
+
+void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){
+  if (htim->Instance == TIM4)
+    handle_timer_interrupt();
+}
+
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+  if (htim->Instance == TIM2 && BSP_PB_GetState(BUTTON_KEY) == RESET){
+    CLEAR_BIT(appFlags, BUTTON_PRESSED_FLAG);
+    HAL_TIM_Base_Stop_IT(&hTimer2);
+  }
+}
+
 
 /**
   * @brief  System Clock Configuration

@@ -37,7 +37,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 extern I2S_HandleTypeDef       hAudioInI2s;
-
+extern TIM_HandleTypeDef       hTimer4;
+extern TIM_HandleTypeDef       hTimer2;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -141,6 +142,7 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   HAL_IncTick();
+  HAL_SYSTICK_IRQHandler();
 }
 
 /******************************************************************************/
@@ -169,6 +171,29 @@ void I2S2_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(hAudioInI2s.hdmarx);
 }
+
+/**
+  * @brief  This function handles TIM4 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void TIM4_IRQHandler(void)
+{
+  HAL_TIM_IRQHandler(&hTimer4);
+}
+
+
+/**
+  * @brief  This function handles TIM2 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void TIM2_IRQHandler(void)
+{
+  HAL_TIM_IRQHandler(&hTimer2);
+}
+
+
 
 
 /**

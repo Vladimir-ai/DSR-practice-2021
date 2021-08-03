@@ -16,21 +16,21 @@
             pulse_duration: PWM pulse duration.
   * @retval None.
   */
-void ledPWMinit(uint32_t period, uint32_t pulseDuration);
+void led_PWM_init(uint32_t period, uint32_t pulseDuration);
 
 /**
-  * @brief  Changes PWM period.
+  * @brief  Changes PWM period for all leds.
   * @param  period: PWM period duration.
   * @retval None.
   */
-void changePeriodDuration(uint32_t periodDuration);
+void change_period_duration(uint32_t periodDuration);
 
 /**
   * @brief  Changes PWM pulse duration for all LEDs.
   * @param  pulse_ticks: PWM pulse duration.
   * @retval None.
   */
-void changePulseDurationForAll(uint32_t pulseDuration);
+void change_pulse_duration_for_all(uint32_t pulseDuration);
 
 /**
   * @brief  Changes PWM pulse for one LED.
@@ -38,7 +38,14 @@ void changePulseDurationForAll(uint32_t pulseDuration);
             pulse_ticks: PWM pulse duration.
   * @retval None.
   */
-void changePulseDuration(Led_TypeDef LED, uint32_t pulseDuration);
+void change_pulse_duration(Led_TypeDef LED, uint32_t pulseDuration);
+
+/**
+  * @brief  Returns value of CCRx associated with led.
+  * @param  LED: LED which CCRx will be returned .
+  * @retval Value of CCRx.
+  */
+uint32_t get_current_brightness(Led_TypeDef LED);
 
 #ifdef __cplusplus
 }
